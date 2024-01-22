@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Tracker App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header class="parent-header">
+      <div class="header">
+        <h1>Project Issue Tracker</h1>
+        <button type="button" class="create-btn"data-bs-toggle="modal" data-bs-target="#project-info">Create+</button>
+      </div>
+    </header>
+    <main>
+      <div class="main-section">
+        <!-- dynamically created projects will be added here. -->
+        <% projects.forEach((p)=>{ %>
+          <div class="project-template">
+            <h1><a href="/issue-tracker/issue-page/<%=p._id%>"><%=p.projectName%></a></h1>
+            <p>Desc: <%=p.description%></p>
+            <span>Author: <%=p.author%></span>
+          </div>
+        <%})%>
+        
+        <!-- <div class="project-template">
+            <h1><a href="#screen-2"></a></h1>
+            <span>username</span>
+          </div>
+          <div class="project-template">
+            <h1><a href="#screen-2"></a></h1>
+            <span>username</span>
+          </div>
+          <div class="project-template">
+            <h1><a href="#screen-2"></a></h1>
+            <span>username</span>
+          </div>
+         -->
+      </div>
+    </main>
+    <!-- bootstrap Model -->  
+  <!-- Modal -->
+  <div class="modal fade" id="project-info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Project Info</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/issue-tracker/home" method="post" id="project-form">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name" name="projectName">
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">description</label>
+                  <input type="text" class="form-control" id="description"name="desc">
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">author</label>
+                    <input type="text" class="form-control" id="author" name="author">
+                 
+                </div>
+                <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Submit</button>
+              </form>   
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

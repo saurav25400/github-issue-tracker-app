@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Data</title>
+    <link rel="stylesheet" href="/css/issueInfo.css" />
+</head>
+<body>
+    <h1 class="seach-heading">search Result</h1>
+    <section class="issue-container">
+        <!-- dynam-ically user created issue will be added here. -->
+        <%if(issues){%>
+        <% issues.forEach((issue)=>{ %>
+          <div class="container template">
+            <div class="title"><h1><%=issue.title%></h1></div>
+            <div class="description"><h1>description:</h1><%=issue.description%></div>
+            <div class="author"><h1>author:</h1> <%=issue.issueCreator%></div>
+            <div class="labels"><h1>labels:</h1> <%=issue.labels%></div>
+          </div>
+          <br>
+        <%})%>
+        <%}else{%>
+          <div class="title">No result found</div>
+        <%}%>
+      </section>
+    
+</body>
+</html>
